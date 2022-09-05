@@ -7,13 +7,6 @@ const ToDoList = () => {
 
         <Task/>
         <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
     </div>
   )
 }
