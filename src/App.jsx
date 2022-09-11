@@ -13,7 +13,7 @@ function App() {
       <Header/>
       
       <main className="mt-12 md:flex">
-        <Form tasks={tasks} setTasks={setTasks} actualTask={actualTask} />
+        <Form tasks={tasks} setTasks={setTasks} actualTask={actualTask} setActualTask={setActualTask} />
         <ToDoList tasks={tasks} setActualTask={setActualTask}/>
       </main>
     </div>
