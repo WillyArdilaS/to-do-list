@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import AlertError from "./AlertError";
 
-const Form = ({tasks, setTasks, actualTask}) => {
+const Form = ({tasks, setTasks, actualTask, setActualTask}) => {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
     const [error, setError] = useState(false);
 
-    const getID = () => {
+    const generateID = () => {
         const id = Math.random().toString(20).substr(2);
         return id;
     }
@@ -15,27 +15,39 @@ const Form = ({tasks, setTasks, actualTask}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        /* Validate Form */
         if([title, date, description].includes("")) {
             setError(true);
             return;
         } 
-        
         setError(false);
 
         const taskObject= {
-            id: getID(),
             title, 
             date,
             description
         }
 
-        setTasks([...tasks, taskObject]);
+        if(actualTask.id) {
+            /* Update Task */
+            const tasksUpdated = tasks.map(taskRequested =>
+                taskRequested.id === actualTask.id ? taskObject : taskRequested
+            )
+
+            setTasks(tasksUpdated);
+            setActualTask({});
+        } else {
+            /* Create task */
+            taskObject.id = generateID();
+            setTasks([...tasks, taskObject]);
+        }
 
         setTitle("");
         setDate("");
         setDescription("");
     }
 
+    /* Click on update button */
     useEffect(() => {
         if(Object.keys(actualTask).length > 0) {
             setTitle(actualTask.title);
