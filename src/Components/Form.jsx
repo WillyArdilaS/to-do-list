@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AlertError from "./AlertError";
 
-const Form = () => {
+const Form = ({tasks, setTasks, actualTask}) => {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
     const [error, setError] = useState(false);
+
+    const getID = () => {
+        const id = Math.random().toString(20).substr(2);
+        return id;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,18 +21,38 @@ const Form = () => {
         } 
         
         setError(false);
+
+        const taskObject= {
+            id: getID(),
+            title, 
+            date,
+            description
+        }
+
+        setTasks([...tasks, taskObject]);
+
+        setTitle("");
+        setDate("");
+        setDescription("");
     }
 
+    useEffect(() => {
+        if(Object.keys(actualTask).length > 0) {
+            setTitle(actualTask.title);
+            setDate(actualTask.date);
+            setDescription(actualTask.description);
+        }
+    }, [actualTask])
+    
     return (
         <div className="md:w-1/2 lg:w-2/5 mx-5">
             <h2 className="font-black text-3xl text-center mb-8"> Task Creation </h2>
 
             <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
-                {error && (
-                    <div className="bg-red-600 font-bold uppercase text-white text-center p-3 mb-5 rounded-md">
-                        <p> There are still some empty fields </p>
-                    </div>
-                )}
+                {error && (<AlertError>
+                                <p> There are still some empty fields </p>
+                            </AlertError>)
+                }
 
                 <div className="mb-5">
                     <label htmlFor="taskForm-title" className="block text-gray-700 uppercase font-bold"> Title </label>
@@ -49,9 +75,16 @@ const Form = () => {
                     className="border-2 w-full p-2 mt-2 rounded-md placeholder-gray-400"/>
                 </div>
 
-                <input type="submit" value={"Create Task"}
-                className="bg-blue-600 w-full p-3 text-white uppercase font-bold rounded-md hover:cursor-pointer
-                hover:bg-blue-700 transition-colors"/>
+                {actualTask.id ? (
+                        <input type="submit" value={"Update Task"}
+                        className="bg-purple-600 w-full p-3 text-white uppercase font-bold rounded-md hover:cursor-pointer
+                        hover:bg-purple-700 transition-colors"/>
+                    ) : (
+                        <input type="submit" value={"Create Task"}
+                        className="bg-blue-600 w-full p-3 text-white uppercase font-bold rounded-md hover:cursor-pointer
+                        hover:bg-blue-700 transition-colors"/>
+                    )
+                }
             </form>
         </div>
   );
