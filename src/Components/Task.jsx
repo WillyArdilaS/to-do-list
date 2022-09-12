@@ -3,7 +3,7 @@ const Task = ({task, setActualTask, deleteTask}) => {
 
   /* Confirm delete task */
   const handleDelete = () => {
-    const answer = confirm("Are you sure you want to delete the task? 🤔");
+    const answer = confirm("Are you sure you want to delete this task ? 🤔");
 
     if(answer) {
       deleteTask(id);
