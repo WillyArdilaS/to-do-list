@@ -30,6 +30,8 @@ const Form = ({tasks, setTasks, actualTask, setActualTask}) => {
 
         if(actualTask.id) {
             /* Update Task */
+            taskObject.id = actualTask.id;
+
             const tasksUpdated = tasks.map(taskRequested =>
                 taskRequested.id === actualTask.id ? taskObject : taskRequested
             )

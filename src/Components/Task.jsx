@@ -1,5 +1,14 @@
-const Task = ({task, setActualTask}) => { 
-  const {title, date, description} = task;
+const Task = ({task, setActualTask, deleteTask}) => { 
+  const {title, date, description, id} = task;
+
+  /* Confirm delete task */
+  const handleDelete = () => {
+    const answer = confirm("Are you sure you want to delete the task? 🤔");
+
+    if(answer) {
+      deleteTask(id);
+    }
+  }
 
   return (
     <div className="bg-white shadow-md rounded-lg px-5 py-10 mt-5">
@@ -23,7 +32,7 @@ const Task = ({task, setActualTask}) => {
           type="button" onClick={() => setActualTask(task)}> Update </button>
 
           <button className="bg-red-600 hover:bg-red-700 mt-4 py-2 px-10 rounded-md text-white font-bold"
-          type="button"> Delete </button>
+          type="button" onClick={handleDelete}> Delete </button>
         </div>
     </div>
   );
