@@ -5,11 +5,11 @@ App que simula una lista de tareas. Tiene diseño responsive y puede guardar los
 Puedes probarla ingresando a este link: https://cutt.ly/QCHU1Rf
 
 ## Table of contents
-  - [ToDoList](#todolist)
+  - [Fotos](#Fotos)
   - [Autor](#autor)
-## ToDoList
-![](https://i.imgur.com/aBfC6fo.png "ToDoList1")
-![](https://i.imgur.com/qwFVAQh.png "ToDoList2")
+## Fotos
+![](https://i.imgur.com/aBfC6fo.png "Fotos1")
+![](https://i.imgur.com/qwFVAQh.png "Fotos2")
 
 ## Autor
 - William Alejandro Ardila Sánchez
