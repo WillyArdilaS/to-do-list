@@ -8,8 +8,8 @@ Puedes probarla ingresando a este link: https://cutt.ly/QCHU1Rf
   - [Fotos](#Fotos)
   - [Autor](#autor)
 ## Fotos
-![](https://i.imgur.com/aBfC6fo.png "Fotos1")
-![](https://i.imgur.com/qwFVAQh.png "Fotos2")
+![](./src/assets/Screenshot%2001.PNG "Fotos1")
+![](./src/assets/Screenshot%2002.PNG "Fotos2")
 
 ## Autor
 - William Alejandro Ardila Sánchez
